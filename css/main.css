@@ -1,0 +1,9 @@
+.lights-on {
+    background-color: #fdf6e3;
+    color: #586e75;
+}
+
+.lights-out {
+    background-color: #002b36;
+    color: #839496;
+}

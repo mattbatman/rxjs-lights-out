@@ -2,9 +2,9 @@
   "name": "rxjs-lights-out",
   "version": "0.0.0",
   "description": "a simple rxjs example",
-  "main": "main.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     }
   },
   "devDependencies": {
+    "http-server": "^0.9.0",
     "jspm": "^0.16.49"
   }
 }
