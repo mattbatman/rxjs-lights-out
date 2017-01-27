@@ -8,7 +8,7 @@ var lightsOn = true;
 // Event listener
 button.addEventListener('click', lightsClicked, false);
 
-// Event handling function
+// Event handling functions
 function lightsClicked(e) {
   toggleLights(e, lightsOn);
   lightsOn = !lightsOn;

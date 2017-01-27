@@ -9,7 +9,10 @@
     color: #839496;
 }
 
-/* Button styling not needed for example */
+/*
+Button styling not needed for example
+Taken from Skeleton CSS http://getskeleton.com/
+*/
 button {
   display: inline-block;
   height: 38px;
