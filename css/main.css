@@ -1,3 +1,4 @@
+/* Class added or removed from body via JavaScript */
 .lights-on {
     background-color: #fdf6e3;
     color: #586e75;
@@ -8,6 +9,7 @@
     color: #839496;
 }
 
+/* Button styling not needed for example */
 button {
   display: inline-block;
   height: 38px;

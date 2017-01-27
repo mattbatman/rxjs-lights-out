@@ -5,10 +5,12 @@ import './rxjs-operators';
 let button = document.querySelector('button');
 let body = document.querySelector('body');
 
-// state
+// State
 let lightsOn = true;
 
 // Observable
+// Streams of values, transformed with RxJS operators:
+// scan, filter, mapTo
 // http://stackoverflow.com/questions/34533158/create-a-toggle-button-with-rxjs
 let button$ = Observable.fromEvent(button, 'click')
   .scan ((state, event) => {
@@ -17,36 +19,37 @@ let button$ = Observable.fromEvent(button, 'click')
 
 let on$ = button$
   .filter(x => x)
-  .mapTo(body);
+  .mapTo({
+    'el': body,
+    'classToAdd': 'lights-on',
+    'classToRemove': 'lights-out'
+  });
 
 let out$ = button$
   .filter(x => !x)
-  .mapTo(body);
+  .mapTo({
+    'el': body,
+    'classToAdd': 'lights-out',
+    'classToRemove': 'lights-on'
+  });
 
-// Observers
-let lightsOnObs = {
+// Observable
+// What to do with the streams
+let lightsObservable = {
   next: (x) => {
-    addClass(x, 'lights-on');
-    removeClass(x, 'lights-out');
-  },
-  error: (err) => { console.error(err); },
-  complete: () => { console.log('stream complete'); }
-};
-
-let lightsOutObs = {
-  next: (x) => {
-    addClass(x, 'lights-out');
-    removeClass(x, 'lights-on');
+    addClass(x.el, x.classToAdd);
+    removeClass(x.el, x.classToRemove);
   },
   error: (err) => { console.error(err); },
   complete: () => { console.log('stream complete'); }
 };
 
 // Subscription
-let onSub = on$.subscribe(lightsOnObs);
-let outSub = out$.subscribe(lightsOutObs);
+// Connection between observer and observables
+let onSub = on$.subscribe(lightsObservable);
+let outSub = out$.subscribe(lightsObservable);
 
-// helper functions
+// Helper functions to add or remove css classes
 // http://youmightnotneedjquery.com/
 function addClass(el, className) {
   if (el.classList) {
