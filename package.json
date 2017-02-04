@@ -4,7 +4,9 @@
   "description": "a simple rxjs example",
   "main": "app.js",
   "scripts": {
-    "start": "http-server"
+    "start": "http-server",
+    "jspm-install": "jspm install",
+    "postinstall": "npm run jspm-install"
   },
   "repository": {
     "type": "git",

@@ -33,9 +33,9 @@ let out$ = button$
     'classToRemove': 'lights-on'
   });
 
-// Observable
+// Observer
 // What to do with the streams
-let lightsObservable = {
+let lightsObserver = {
   next: (x) => {
     addClass(x.el, x.classToAdd);
     removeClass(x.el, x.classToRemove);
@@ -46,8 +46,8 @@ let lightsObservable = {
 
 // Subscription
 // Connection between observer and observables
-let onSub = on$.subscribe(lightsObservable);
-let outSub = out$.subscribe(lightsObservable);
+let onSub = on$.subscribe(lightsObserver);
+let outSub = out$.subscribe(lightsObserver);
 
 // Helper functions to add or remove css classes
 // http://youmightnotneedjquery.com/
